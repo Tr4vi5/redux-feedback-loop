@@ -5,22 +5,28 @@ class CommentsFeedback extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            comments: null
+            comments: 'None'
         }
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
         let action = { type: 'ADD_COMMENTS', payload: this.state.comments }
         this.props.dispatch(action);
+
+        let feedbackObject = this.props.reduxState.feedbackReducer;
+        console.log(feedbackObject);
+        
+        
         this.props.history.push('thank');
     }
 
     handleTextChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        if (e.target.value !== ''){
+            this.setState({
+                [e.target.name]: e.target.value
+            })
+        }
     }
 
     render() {
@@ -38,7 +44,7 @@ class CommentsFeedback extends Component {
                 </table>
                 <h1>Any comments?</h1>
                 <form onSubmit={this.handleFormSubmit} value={this.state}>
-                    <input type="text" name="comments" onChange={this.handleTextChange} />
+                    <input type="text" name="comments" onChange={this.handleTextChange}/>
                     <input type="submit" value="Submit Feedback" />
                 </form>
             </div>
@@ -46,4 +52,7 @@ class CommentsFeedback extends Component {
     }
 }
 
-export default connect()(CommentsFeedback);
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
+export default connect(mapReduxStateToProps)(CommentsFeedback);

@@ -11,7 +11,6 @@ class SupportFeedback extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
     let action = { type: 'ADD_SUPPORT', payload: this.state.support }
     if (action.payload !== null) {
       this.props.dispatch(action);

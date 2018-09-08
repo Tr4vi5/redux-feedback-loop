@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 class SupportFeedback extends Component {
 
   handleClick = () => {
-    this.props.history.push('/')
+    this.props.dispatch({type: 'RESET_STATE'}); // resets the feedbackReducer state
+    this.props.history.push('/') // redirects to the first feedback question
   }
-  
+
   render() {
     return (
       <div>
