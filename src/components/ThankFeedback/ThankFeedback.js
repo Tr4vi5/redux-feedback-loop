@@ -2,32 +2,26 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
 class SupportFeedback extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      support: null
-    }
-  }
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state);
-    let action = { type: 'ADD_SUPPORT', payload: this.state.support }
-    this.props.dispatch(action);
-    this.props.history.push('comments');
+  handleClick = () => {
+    this.props.history.push('/')
   }
-
-  handleRadioChange = (e) => {
-    this.setState({
-      [e.target.name]: parseInt(e.target.value)
-    })
-  }
-
+  
   render() {
     return (
       <div>
+        <table style={{ width: '400px', margin: 'auto' }}>
+          <thead style={{ backgroundColor: '#ccc' }}>
+            <tr style={{ height: '20px' }}>
+              <th style={{ backgroundColor: 'green' }}></th>
+              <th style={{ backgroundColor: 'green' }}></th>
+              <th style={{ backgroundColor: 'green' }}></th>
+              <th style={{ backgroundColor: 'green' }}></th>
+            </tr>
+          </thead>
+        </table>
         <h1>Thank you for submitting feedback!</h1>
-        <button>Leave new feedback</button>
+        <button onClick={this.handleClick}>Leave new feedback</button>
       </div>
     )
   }

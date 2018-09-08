@@ -26,9 +26,19 @@ class CommentsFeedback extends Component {
     render() {
         return (
             <div>
-                <h1>Did you feel supported today?</h1>
+                <table style={{ width: '400px', margin: 'auto' }}>
+                    <thead style={{ backgroundColor: '#ccc' }}>
+                        <tr style={{ height: '20px' }}>
+                            <th style={{ backgroundColor: 'green' }}></th>
+                            <th style={{ backgroundColor: 'green' }}></th>
+                            <th style={{ backgroundColor: 'green' }}></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+                <h1>Any comments?</h1>
                 <form onSubmit={this.handleFormSubmit} value={this.state}>
-                    <input type="text" name="comments" onChange={this.handleTextChange}/>
+                    <input type="text" name="comments" onChange={this.handleTextChange} />
                     <input type="submit" value="Submit Feedback" />
                 </form>
             </div>

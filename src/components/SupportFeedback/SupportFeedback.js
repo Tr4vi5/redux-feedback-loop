@@ -12,9 +12,13 @@ class SupportFeedback extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
-    let action = { type: 'ADD_SUPPORT', payload: this.state.support}
-    this.props.dispatch(action);
-    this.props.history.push('comments');
+    let action = { type: 'ADD_SUPPORT', payload: this.state.support }
+    if (action.payload !== null) {
+      this.props.dispatch(action);
+      this.props.history.push('comments');
+    } else {
+      alert('Please tell us if you are feeling supported');
+    }
   }
 
   handleRadioChange = (e) => {
@@ -26,6 +30,16 @@ class SupportFeedback extends Component {
   render() {
     return (
       <div>
+        <table style={{ width: '400px', margin: 'auto' }}>
+          <thead style={{ backgroundColor: '#ccc' }}>
+            <tr style={{ height: '20px' }}>
+              <th style={{ backgroundColor: 'forestgreen' }}></th>
+              <th style={{ backgroundColor: 'forestgreen' }}></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+        </table>
         <h1>Did you feel supported today?</h1>
         <form onSubmit={this.handleFormSubmit} value={this.state}>
           <label htmlFor="one">1</label>

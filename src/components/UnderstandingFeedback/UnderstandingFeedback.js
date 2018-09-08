@@ -11,10 +11,13 @@ class UnderstandingFeedback extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
     let action = { type: 'ADD_UNDERSTANDING', payload: this.state.understanding }
-    this.props.dispatch(action);
-    this.props.history.push('support');
+    if (action.payload !== null) {
+      this.props.dispatch(action);
+      this.props.history.push('support');
+    } else {
+      alert('Please tell us how well you are understanding the material');
+    }
   }
 
   handleRadioChange = (e) => {
@@ -26,6 +29,16 @@ class UnderstandingFeedback extends Component {
   render() {
     return (
       <div>
+        <table style={{ width: '400px', margin: 'auto' }}>
+          <thead style={{ backgroundColor: '#ccc' }}>
+            <tr style={{ height: '20px' }}>
+              <th style={{ backgroundColor: 'forestgreen' }}></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+        </table>
         <h1>How well are you understanding today's material?</h1>
         <form onSubmit={this.handleFormSubmit} value={this.state}>
           <label htmlFor="one">1</label>
