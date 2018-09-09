@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class CommentsFeedback extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            comments: 'None'
+        this.state = { 
+            ...this.props.reduxState.feedbackReducer, comments: 'None'
         }
     }
 
@@ -13,10 +14,16 @@ class CommentsFeedback extends Component {
         e.preventDefault();
         let action = { type: 'ADD_COMMENTS', payload: this.state.comments }
         this.props.dispatch(action);
-
-        let feedbackObject = this.props.reduxState.feedbackReducer;
-        console.log(feedbackObject);
-        
+        axios({
+            method: 'POST',
+            url: '/feedback',
+            data: this.state
+        }).then((response)=>{
+            console.log('Success in POST', response.data);
+        }).catch((error)=>{
+            console.log('Error in POST', error);
+            alert('Sorry, could not send feedback');
+        });
         
         this.props.history.push('thank');
     }
