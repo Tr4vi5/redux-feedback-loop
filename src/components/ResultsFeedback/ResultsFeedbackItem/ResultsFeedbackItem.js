@@ -1,15 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import moment from 'moment';
 
 class ResultsFeedbackItem extends Component {
+
+    handleDeleteClick = () => {
+        this.props.deleteFeedback(this.props.feedbackItem);
+    }
+
+    handleFlagClick = () => {
+        this.props.flagFeedback(this.props.feedbackItem);
+    }
+
     render() {
         return (
             <tr>
-                <td>{this.props.feedbackItem.date}</td>
+                <td>{moment(this.props.feedbackItem.date).format('MM/DD/YYYY')}</td>
                 <td>{this.props.feedbackItem.feeling}</td>
                 <td>{this.props.feedbackItem.understanding}</td>
                 <td>{this.props.feedbackItem.support}</td>
                 <td>{this.props.feedbackItem.comments}</td>
-                <td><button>Flag for Review</button><button>Delete</button></td>
+                <td><button>Flag for Review</button><button onClick={this.handleDeleteClick}>Delete</button></td>
             </tr>
         )
     }

@@ -30,6 +30,19 @@ class ResultsFeedback extends Component {
     });
   }
 
+  deleteFeedback = (feedbackToDelete) =>{
+    console.log(feedbackToDelete);
+    axios({
+      method: 'DELETE',
+      url: `/feedback/delete/${feedbackToDelete.id}`
+    }).then((response)=>{
+      console.log('Success!');
+      this.getFeedback();
+    }).catch((error)=>{
+      console.log('Error deleting', error);
+    });
+  }
+
   render() {
     return (
       <div>
@@ -47,9 +60,9 @@ class ResultsFeedback extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.feedback.map((feedbackItem, index)=>{
+            {this.state.feedback.map((feedbackItem, index)=>{ // maps over feedback from database to create table rows
               return(
-                <ResultsFeedbackItem key={index} feedbackItem={feedbackItem}/>
+                <ResultsFeedbackItem key={index} feedbackItem={feedbackItem} deleteFeedback={this.deleteFeedback}/>
               )
             })}
           </tbody>
