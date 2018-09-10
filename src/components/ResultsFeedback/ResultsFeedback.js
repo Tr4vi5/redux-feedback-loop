@@ -50,7 +50,7 @@ class ResultsFeedback extends Component {
     }).then((response) => {
       console.log('Success in put!');
       this.getFeedback(); // refresh DOM after update
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log('Error updating', error);
       alert('Sorry, could not flag for review');
     })
@@ -75,7 +75,8 @@ class ResultsFeedback extends Component {
           <tbody>
             {this.state.feedback.map((feedbackItem, index) => { // maps over feedback from database to create table rows
               return (
-                <ResultsFeedbackItem key={index} feedbackItem={feedbackItem} deleteFeedback={this.deleteFeedback} flagFeedback={this.flagFeedback}/>
+                // send feedbackItem, deleteFeedback and flagFeedback to the ResultsFeedbackItem component
+                <ResultsFeedbackItem key={index} feedbackItem={feedbackItem} deleteFeedback={this.deleteFeedback} flagFeedback={this.flagFeedback} />
               )
             })}
           </tbody>
@@ -84,7 +85,7 @@ class ResultsFeedback extends Component {
     )
   }
 }
-const mapReduxStateToProps = (reduxState) => ({
+const mapReduxStateToProps = (reduxState) => ({ // map feedbackReducer state to this.props
   reduxState
 });
-export default connect(mapReduxStateToProps)(ResultsFeedback);
+export default connect(mapReduxStateToProps)(ResultsFeedback); // connect component to redux store and export component

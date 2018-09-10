@@ -12,23 +12,25 @@ class SupportFeedback extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     let action = { type: 'ADD_SUPPORT', payload: this.state.support }
+    // only send to feedbackReducer if user entered an input
     if (action.payload !== null) {
       this.props.dispatch(action);
-      this.props.history.push('comments');
+      this.props.history.push('comments'); // navigate to the comments page
     } else {
       alert('Please tell us if you are feeling supported');
     }
-  }
+  }// end handleFormSubmit function
 
   handleRadioChange = (e) => {
     this.setState({
-      [e.target.name]: parseInt(e.target.value, 10)
+      [e.target.name]: parseInt(e.target.value, 10) // set the targeted state property to the selected radio button, change the value to an integer
     })
-  }
+  }// end handleRadioChange function
 
   render() {
     return (
       <div>
+        {/* start "progress bar" */}
         <table style={{ width: '400px', margin: 'auto' }}>
           <thead style={{ backgroundColor: '#ccc' }}>
             <tr style={{ height: '20px' }}>
@@ -39,6 +41,7 @@ class SupportFeedback extends Component {
             </tr>
           </thead>
         </table>
+        {/* end progress bar */}
         <h1>Did you feel supported today?</h1>
         <form onSubmit={this.handleFormSubmit} value={this.state}>
           <label htmlFor="one">1</label>
@@ -58,4 +61,4 @@ class SupportFeedback extends Component {
   }
 }
 
-export default connect()(SupportFeedback);
+export default connect()(SupportFeedback); // connect component to redux store and export

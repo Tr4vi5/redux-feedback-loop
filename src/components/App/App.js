@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom'; // import routing tools
 import FeelingFeedback from '../FeelingFeedback/FeelingFeedback.js';
 import UnderstandingFeedback from '../UnderstandingFeedback/UnderstandingFeedback.js';
 import SupportFeedback from '../SupportFeedback/SupportFeedback.js';
@@ -24,7 +24,7 @@ class App extends Component {
             <Route path="/support" component={SupportFeedback} />
             <Route path="/comments" component={CommentsFeedback} />
             <Route path="/thank" component={ThankFeedback} />
-            <Route path="/admin" component={ResultsFeedback} />
+            <Route path="/admin" component={ResultsFeedback} /> {/* this route is only accessible via manual access */}
           </div>
         </div>
       </Router>
@@ -32,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App; // export component

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import moment from 'moment';
+import moment from 'moment'; //import moment.js for date formatting
 
 class ResultsFeedbackItem extends Component {
 
     handleDeleteClick = () => {
-        if ( window.confirm('Are you sure?') ) {
+        if (window.confirm('Are you sure?')) { //confirm with user that they would like to delete the entry
             this.props.deleteFeedback(this.props.feedbackItem);
         }
-    }
+    } // end handleDeleteClick function
 
     handleFlagClick = () => {
         this.props.flagFeedback(this.props.feedbackItem);
-    }
+    } // end handleFlagClick function
 
     render() {
         return (
@@ -27,4 +27,4 @@ class ResultsFeedbackItem extends Component {
     }
 }
 
-export default ResultsFeedbackItem;
+export default ResultsFeedbackItem; // export component

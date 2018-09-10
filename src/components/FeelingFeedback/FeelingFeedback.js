@@ -12,23 +12,25 @@ class FeelingFeedback extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         let action = { type: 'ADD_FEELING', payload: this.state.feeling }
+        // if input is entered, dispatch to the feedbackReducer in the redux store and navigate to the understanding page
         if (action.payload !== null) {
             this.props.dispatch(action);
             this.props.history.push('understanding');
         } else {
             alert('Please tell us how you are feeling');
         }
-    }
+    }// end handleFormSubmit function
 
     handleRadioChange = (e) => {
         this.setState({
-            [e.target.name]: parseInt(e.target.value, 10)
+            [e.target.name]: parseInt(e.target.value, 10) // take input from radio form and set to an integer in this.state
         })
-    }
+    }// end handleRadioChange function
 
     render() {
         return (
             <div>
+                {/* start "progress bar" */}
                 <table style={{ width: '400px', margin: 'auto' }}>
                     <thead style={{ backgroundColor: '#ccc' }}>
                         <tr style={{ height: '20px' }}>
@@ -39,6 +41,7 @@ class FeelingFeedback extends Component {
                         </tr>
                     </thead>
                 </table>
+                {/* end "progress bar" */}
                 <h1>How are you feeling today?</h1>
                 <form onSubmit={this.handleFormSubmit} value={this.state}>
                     <label htmlFor="one">1</label>
@@ -58,4 +61,4 @@ class FeelingFeedback extends Component {
     }
 }
 
-export default connect()(FeelingFeedback);
+export default connect()(FeelingFeedback); // connect to redux store and export component
