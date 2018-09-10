@@ -11,7 +11,6 @@ class FeelingFeedback extends Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
         let action = { type: 'ADD_FEELING', payload: this.state.feeling }
         if (action.payload !== null) {
             this.props.dispatch(action);
@@ -23,7 +22,7 @@ class FeelingFeedback extends Component {
 
     handleRadioChange = (e) => {
         this.setState({
-            [e.target.name]: parseInt(e.target.value)
+            [e.target.name]: parseInt(e.target.value, 10)
         })
     }
 

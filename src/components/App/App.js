@@ -15,7 +15,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <h1 className="App-title">Feedback Loop</h1>
-            <h4><i>Don't forget it!</i></h4>
+            <h4><i>How do I get out of this thing!?</i></h4>
           </header>
           <br />
           <div>
