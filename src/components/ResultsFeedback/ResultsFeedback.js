@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import axios from 'axios';
+import ResultsFeedbackItem from './ResultsFeedbackItem/ResultsFeedbackItem';
 
 class ResultsFeedback extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      feedback: []
+    }
+  }
 
   componentDidMount(){
     this.getFeedback();
@@ -14,6 +21,9 @@ class ResultsFeedback extends Component {
       url: '/feedback'
     }).then((response)=>{
       console.log('Success GETting feedback', response.data);
+      this.setState({
+        feedback: response.data
+      })
     }).catch((error)=>{
       console.log('Error GETting feedback', error);
       alert('Sorry, could not find feedback, try again later');
@@ -24,15 +34,25 @@ class ResultsFeedback extends Component {
     return (
       <div>
         <h1>Feedback Results</h1>
-        <table style={{ width: '400px', margin: 'auto' }}>
-          <thead style={{ backgroundColor: '#ccc' }}>
-            <tr style={{ height: '20px' }}>
-              <th style={{ backgroundColor: 'green' }}></th>
-              <th style={{ backgroundColor: 'green' }}></th>
-              <th style={{ backgroundColor: 'green' }}></th>
-              <th style={{ backgroundColor: 'green' }}></th>
+        <br />
+        <table style={{width: '100%', border: '1px, solid, black'}}>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Feeling</th>
+              <th>Comprehension</th>
+              <th>Support</th>
+              <th>Comments</th>
+              <th>Inputs</th>
             </tr>
           </thead>
+          <tbody>
+            {this.state.feedback.map((feedbackItem, index)=>{
+              return(
+                <ResultsFeedbackItem key={index} feedbackItem={feedbackItem}/>
+              )
+            })}
+          </tbody>
         </table>
       </div>
     )

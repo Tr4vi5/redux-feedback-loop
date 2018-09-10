@@ -12,7 +12,7 @@ app.use(express.static('build'));
 /** ---------- EXPRESS ROUTES ---------- **/
 
 app.get('/feedback', (req,res) => {
-    const queryText = `SELECT * FROM "feedback";`;
+    const queryText = `SELECT * FROM "feedback" ORDER BY "date" DESC;`;
     pool.query(queryText)
         .then((results)=>{
             console.log(results.rows);
