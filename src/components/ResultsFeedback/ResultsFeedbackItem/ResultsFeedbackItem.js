@@ -10,7 +10,7 @@ class ResultsFeedbackItem extends Component {
     handleFlagClick = () => {
         this.props.flagFeedback(this.props.feedbackItem);
     }
-
+    
     render() {
         return (
             <tr>
@@ -19,7 +19,7 @@ class ResultsFeedbackItem extends Component {
                 <td>{this.props.feedbackItem.understanding}</td>
                 <td>{this.props.feedbackItem.support}</td>
                 <td>{this.props.feedbackItem.comments}</td>
-                <td><button>Flag for Review</button><button onClick={this.handleDeleteClick}>Delete</button></td>
+                <td><button onClick={this.handleFlagClick}>Flag for Review</button><button onClick={this.handleDeleteClick}>Delete</button></td>
             </tr>
         )
     }
