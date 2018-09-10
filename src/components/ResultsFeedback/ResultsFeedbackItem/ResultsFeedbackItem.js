@@ -4,13 +4,15 @@ import moment from 'moment';
 class ResultsFeedbackItem extends Component {
 
     handleDeleteClick = () => {
-        this.props.deleteFeedback(this.props.feedbackItem);
+        if ( window.confirm('Are you sure?') ) {
+            this.props.deleteFeedback(this.props.feedbackItem);
+        }
     }
 
     handleFlagClick = () => {
         this.props.flagFeedback(this.props.feedbackItem);
     }
-    
+
     render() {
         return (
             <tr>

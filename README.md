@@ -54,6 +54,7 @@ npm run client
 - [x] Use moment.js to format the date from the database
 - [x] Add the ability to delete an existing feedback entry on the /admin view
 - [x] Add the ability to flag an existing feedback entry for further review on the /admin view
+- [x] Add delete confirmation prompt prior to sending delete request to database
 
 
 ### STRETCH GOALS
